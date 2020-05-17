@@ -12,7 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class FirstFragment extends Fragment {
-    byte next_char = 0b00011010; //S
+    byte nextChar = 0b00011010; //S
+
+    boolean[] touched = new boolean[6];
+    InputModule inputModule = new InputModule();
 
     byte one = 0b00100000;
     byte two = 0b00010000;
@@ -26,90 +29,121 @@ public class FirstFragment extends Fragment {
 
     private void setDotsColor(View view) {
         Button reader_button_1 = view.findViewById(R.id.reader_button_1);
-        if ((next_char & one) != 0) reader_button_1.setBackgroundColor(black);
+        if ((nextChar & one) != 0) reader_button_1.setBackgroundColor(black);
         else reader_button_1.setBackgroundColor(white);
 
         Button reader_button_2 = view.findViewById(R.id.reader_button_2);
-        if ((next_char & two) != 0) reader_button_2.setBackgroundColor(black);
+        if ((nextChar & two) != 0) reader_button_2.setBackgroundColor(black);
         else reader_button_2.setBackgroundColor(white);
 
         Button reader_button_3 = view.findViewById(R.id.reader_button_3);
-        if ((next_char & three) != 0) reader_button_3.setBackgroundColor(black);
+        if ((nextChar & three) != 0) reader_button_3.setBackgroundColor(black);
         else reader_button_3.setBackgroundColor(white);
 
         Button reader_button_4 = view.findViewById(R.id.reader_button_4);
-        if ((next_char & four) != 0) reader_button_4.setBackgroundColor(black);
+        if ((nextChar & four) != 0) reader_button_4.setBackgroundColor(black);
         else reader_button_4.setBackgroundColor(white);
 
         Button reader_button_5 = view.findViewById(R.id.reader_button_5);
-        if ((next_char & five) != 0) reader_button_5.setBackgroundColor(black);
+        if ((nextChar & five) != 0) reader_button_5.setBackgroundColor(black);
         else reader_button_5.setBackgroundColor(white);
 
         Button reader_button_6 = view.findViewById(R.id.reader_button_6);
-        if ((next_char & six) != 0) reader_button_6.setBackgroundColor(black);
+        if ((nextChar & six) != 0) reader_button_6.setBackgroundColor(black);
         else reader_button_6.setBackgroundColor(white);
 
         return;
     }
 
-    private void setDotsClickListeners(View view) {
-        Button reader_button_1 = view.findViewById(R.id.reader_button_1);
+    private boolean allTouched() {
+        for (int i = 0; i < 6; i++) {
+            if (touched[i] == false) return false;
+        }
+        return true;
+    }
+
+    void displayNextChar(View view) {
+        if(inputModule.isThereNextChar()) {
+            nextChar = inputModule.getNextChar();
+            for (int i = 0; i < 6; i++) {
+                touched[i] = false;
+            }
+            setDotsColor(view);
+        } else {
+            view.findViewById(R.id.reader_button_to_write).performClick();
+        }
+    }
+
+    private void setDotsClickListeners(final View fragmentView) {
+        Button reader_button_1 = fragmentView.findViewById(R.id.reader_button_1);
         reader_button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((next_char & one) != 0) {
+                if ((nextChar & one) != 0) {
                     view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 }
+                touched[0] = true;
+                if (allTouched()) displayNextChar(fragmentView);
             }
         });
 
-        Button reader_button_2 = view.findViewById(R.id.reader_button_2);
+        Button reader_button_2 = fragmentView.findViewById(R.id.reader_button_2);
         reader_button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((next_char & two) != 0) {
+                if ((nextChar & two) != 0) {
                     view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 }
+                touched[1] = true;
+                if (allTouched()) displayNextChar(fragmentView);
             }
         });
 
-        Button reader_button_3 = view.findViewById(R.id.reader_button_3);
+        Button reader_button_3 = fragmentView.findViewById(R.id.reader_button_3);
         reader_button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((next_char & three) != 0) {
+                if ((nextChar & three) != 0) {
                     view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 }
+                touched[2] = true;
+                if (allTouched()) displayNextChar(fragmentView);
             }
         });
 
-        Button reader_button_4 = view.findViewById(R.id.reader_button_4);
+        Button reader_button_4 = fragmentView.findViewById(R.id.reader_button_4);
         reader_button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((next_char & four) != 0) {
+                if ((nextChar & four) != 0) {
                     view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 }
+                touched[3] = true;
+                if (allTouched()) displayNextChar(fragmentView);
             }
         });
 
-        Button reader_button_5 = view.findViewById(R.id.reader_button_5);
+        Button reader_button_5 = fragmentView.findViewById(R.id.reader_button_5);
         reader_button_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((next_char & five) != 0) {
+                if ((nextChar & five) != 0) {
                     view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 }
+                touched[4] = true;
+                if (allTouched()) displayNextChar(fragmentView);
             }
         });
 
-        Button reader_button_6 = view.findViewById(R.id.reader_button_6);
+        Button reader_button_6 = fragmentView.findViewById(R.id.reader_button_6);
         reader_button_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((next_char & six) != 0) {
+                if ((nextChar & six) != 0) {
                     view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 }
+                touched[5] = true;
+                if (allTouched()) displayNextChar(fragmentView);
             }
         });
 
@@ -128,8 +162,9 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setDotsColor(view);
         setDotsClickListeners(view);
+        displayNextChar(view);
+
         view.findViewById(R.id.reader_button_to_write).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
