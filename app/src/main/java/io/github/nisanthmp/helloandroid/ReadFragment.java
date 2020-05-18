@@ -154,7 +154,7 @@ public class ReadFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return inflater.inflate(R.layout.fragment_read, container, false);
     }
 
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
@@ -178,7 +178,7 @@ public class ReadFragment extends Fragment {
                 viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
                 NavHostFragment.findNavController(ReadFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_ReadFragment_to_WriteFragment);
             }
         });
 
