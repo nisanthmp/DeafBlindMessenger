@@ -1,6 +1,7 @@
 package io.github.nisanthmp.helloandroid;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,15 +64,12 @@ public class FirstFragment extends Fragment {
     }
 
     void displayNextChar(View view) {
-        if(inputModule.isThereNextChar()) {
-            nextChar = inputModule.getNextChar();
-            for (int i = 0; i < 6; i++) {
-                touched[i] = false;
-            }
-            setDotsColor(view);
-        } else {
-            view.findViewById(R.id.reader_button_to_write).performClick();
+        try {
+            Thread.sleep(400);
+        } catch (Exception error) {
+            Log.d("Exception", error.toString());
         }
+        view.findViewById(R.id.reader_button_next).performClick();
     }
 
     private void setDotsClickListeners(final View fragmentView) {
@@ -159,18 +157,53 @@ public class FirstFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        setDotsClickListeners(view);
-        displayNextChar(view);
 
         view.findViewById(R.id.reader_button_to_write).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View viewWrite) {
+                viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                try {
+                    Thread.sleep(100);
+                } catch (Exception error) {
+                    Log.d("Exception", error.toString());
+                }
+                viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                try {
+                    Thread.sleep(100);
+                } catch (Exception error) {
+                    Log.d("Exception", error.toString());
+                }
+                viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+
+        view.findViewById(R.id.reader_button_next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View viewNext) {
+                if(inputModule.isThereNextChar()) {
+                    viewNext.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    try {
+                        Thread.sleep(100);
+                    } catch (Exception error) {
+                        Log.d("Exception", error.toString());
+                    }
+                    viewNext.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    nextChar = inputModule.getNextChar();
+                    for (int i = 0; i < 6; i++) {
+                        touched[i] = false;
+                    }
+                    setDotsColor(view);
+                } else {
+                    view.findViewById(R.id.reader_button_to_write).performClick();
+                }
+            }
+        });
+        setDotsClickListeners(view);
+        displayNextChar(view);
     }
 }
