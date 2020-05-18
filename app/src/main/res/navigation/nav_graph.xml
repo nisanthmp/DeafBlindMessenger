@@ -38,4 +38,5 @@
             android:id="@+id/action_WriteFragment_to_ReadFragment"
             app:destination="@id/ReadFragment" />
     </fragment>
+
 </navigation>

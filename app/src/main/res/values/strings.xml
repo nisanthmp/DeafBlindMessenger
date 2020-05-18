@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Brailley</string>
     <string name="action_settings">Settings</string>
+    <string name="action_user_input">User Input</string>
     <!-- Strings used for fragments for navigation -->
     <string name="options_fragment_label">Options Fragment</string>
     <string name="read_fragment_label">Read Fragment</string>
@@ -9,6 +10,7 @@
     <string name="previous">Previous</string>
     <string name="write">Write</string>
     <string name="read">Read</string>
+    <string name="input_text">Enter text here..</string>
 
     <string name="hello_read_fragment">1</string>
     <string name="hello_write_fragment">Hello write fragment. Arg: %1$s</string>

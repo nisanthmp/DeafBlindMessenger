@@ -2,6 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="io.github.nisanthmp.helloandroid.MainActivity">
+
+    <item
+        android:id="@+id/action_user_input"
+        android:orderInCategory="100"
+        android:title="@string/action_user_input"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

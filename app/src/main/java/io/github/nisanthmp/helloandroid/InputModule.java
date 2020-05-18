@@ -14,7 +14,8 @@ public class InputModule {
     byte[] inputChars = {0b00101100, 0b00100110, 0b00011101, 0b00000000, 0b00100000, 0b00101110,
                          0b00100100, 0b00000000, 0b00110111, 0b00100110, 0b00100011, 0b00001011};
 
-    String inputString = "HOW ARE YOU?";
+    //String inputString = "HOW ARE YOU?";
+    public static String inputString = " ";
     public byte getNextChar() {
         //if (charIdx < inputChars.length) return inputChars[charIdx ++];
         if (charIdx < inputString.length()) {
