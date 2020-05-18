@@ -9,6 +9,7 @@
     <string name="previous">Previous</string>
     <string name="write">Write</string>
     <string name="read">Read</string>
+    <string name="send">Send</string>
 
     <string name="hello_read_fragment">1</string>
     <string name="hello_write_fragment">Hello write fragment. Arg: %1$s</string>
