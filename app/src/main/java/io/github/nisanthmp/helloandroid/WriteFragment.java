@@ -47,7 +47,7 @@ public class WriteFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-                outputModule.setInputCharByteArray(inputMessageBytes.toArray());
+                outputModule.setOutputBrailleByteArray(inputMessageBytes.toArray());
                 outputModule.sendMessage();
                 try {
                     Thread.sleep(100);
