@@ -2,6 +2,7 @@ package io.github.nisanthmp.helloandroid;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         String read_permission = Manifest.permission.RECEIVE_SMS;
         String write_permission = Manifest.permission.SEND_SMS;
+        String phoneState_permission = Manifest.permission.READ_PHONE_STATE;
 
         requestPermission(read_permission);
         requestPermission(write_permission);
+        if (Build.VERSION.SDK_INT >= 28) requestPermission(phoneState_permission);
 
         SmsReceiver.bindListener(new SmsListener() {
             @Override

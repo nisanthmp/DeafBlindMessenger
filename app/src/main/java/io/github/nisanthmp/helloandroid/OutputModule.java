@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 
 public class OutputModule {
     Object[] inputCharByteArray;
-    public static String messageString;
+    public static String messageString = "Hello";
     public void setInputCharByteArray(Object[] array) {
         inputCharByteArray = array;
     }
@@ -14,7 +14,7 @@ public class OutputModule {
     public void sendMessage() {
         convertFromBytesToString();
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage("8547071009", null, messageString, null, null);
+        smsManager.sendTextMessage("8547071009", null, "messageString", null, null);
     }
 
     private void convertFromBytesToString() {
