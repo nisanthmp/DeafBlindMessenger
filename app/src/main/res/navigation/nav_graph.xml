@@ -25,10 +25,6 @@
         tools:layout="@layout/fragment_read">
 
         <action
-            android:id="@+id/action_ReadFragment_to_WriteFragment"
-            app:destination="@id/WriteFragment" />
-
-        <action
             android:id="@+id/action_ReadFragment_to_OptionsFragment"
             app:destination="@id/OptionsFragment" />
 
@@ -38,10 +34,6 @@
         android:name="io.github.nisanthmp.helloandroid.WriteFragment"
         android:label="@string/write_fragment_label"
         tools:layout="@layout/fragment_write">
-
-        <action
-            android:id="@+id/action_WriteFragment_to_ReadFragment"
-            app:destination="@id/ReadFragment" />
 
         <action
             android:id="@+id/action_WriteFragment_to_OptionsFragment"

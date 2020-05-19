@@ -13,8 +13,8 @@ public class OutputModule {
 
     public void sendMessage() {
         convertFromBytesToString();
-        //SmsManager smsManager = SmsManager.getDefault();
-        //smsManager.sendTextMessage("8547071009", null, messageString, null, null);
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("8547071009", null, messageString, null, null);
     }
 
     private void convertFromBytesToString() {

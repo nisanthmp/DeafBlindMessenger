@@ -43,14 +43,6 @@ public class WriteFragment extends Fragment {
     public void onViewCreated(@NonNull View fragmentView, Bundle savedInstanceState) {
         super.onViewCreated(fragmentView, savedInstanceState);
 
-        fragmentView.findViewById(R.id.writer_button_to_read).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(WriteFragment.this)
-                        .navigate(R.id.action_WriteFragment_to_ReadFragment);
-            }
-        });
-
         fragmentView.findViewById(R.id.writer_button_to_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

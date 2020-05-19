@@ -160,28 +160,6 @@ public class ReadFragment extends Fragment {
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.reader_button_to_write).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View viewWrite) {
-                viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-                try {
-                    Thread.sleep(100);
-                } catch (Exception error) {
-                    Log.d("Exception", error.toString());
-                }
-                viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-                try {
-                    Thread.sleep(100);
-                } catch (Exception error) {
-                    Log.d("Exception", error.toString());
-                }
-                viewWrite.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-
-                NavHostFragment.findNavController(ReadFragment.this)
-                        .navigate(R.id.action_ReadFragment_to_WriteFragment);
-            }
-        });
-
         view.findViewById(R.id.reader_button_next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View viewNext) {

@@ -1,5 +1,7 @@
 package io.github.nisanthmp.helloandroid;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -7,13 +9,17 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +30,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        String read_permission = Manifest.permission.RECEIVE_SMS;
+        String write_permission = Manifest.permission.SEND_SMS;
+
+        requestPermission(read_permission);
+        requestPermission(write_permission);
+
+        SmsReceiver.bindListener(new SmsListener() {
+            @Override
+            public void messageReceived(String messageText) {
+                InputModule.inputString=messageText;
+
+                Button mButton = (Button) findViewById(R.id.read_button);
+                mButton.setEnabled(true);
+            }
+        });
 
         //Button button = findViewById(R.id.reader_button_1);
         //button.setBackgroundColor(0x00000000);
@@ -43,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
          */
+
+        //super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -65,5 +90,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void requestPermission(String permission) {
+        int grant = ContextCompat.checkSelfPermission(this, permission);
+        if (grant != PackageManager.PERMISSION_GRANTED) {
+            String[] permission_list = new String[1];
+            permission_list[0] = permission;
+
+            ActivityCompat.requestPermissions(this, permission_list, 1);
+        }
     }
 }
