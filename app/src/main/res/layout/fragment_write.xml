@@ -75,36 +75,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/writer_button_to_read"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="48dp"
-        android:hapticFeedbackEnabled="true"
-        android:text="@string/read"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/write_button_6"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/write_button_5" />
-
-    <Button
         android:id="@+id/writer_button_to_send"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="133dp"
+        android:layout_height="251dp"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
+        android:background="@android:color/darker_gray"
         android:foregroundGravity="center"
         android:gravity="center"
         android:hapticFeedbackEnabled="true"
         android:text="@string/send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/write_button_4"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toEndOf="@+id/write_button_3"
         app:layout_constraintTop_toTopOf="parent" />
 
