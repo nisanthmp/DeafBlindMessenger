@@ -27,7 +27,9 @@ public class WriteFragment extends Fragment {
     int white = 0xFFFFFFFF;
 
     byte[] touched = new byte[6];
-    List<Byte> InputMessageBytes = new ArrayList<Byte>();
+    List<Byte> inputMessageBytes = new ArrayList<Byte>();
+
+    OutputModule outputModule = new OutputModule();
 
     @Override
     public View onCreateView(
@@ -46,6 +48,29 @@ public class WriteFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(WriteFragment.this)
                         .navigate(R.id.action_WriteFragment_to_ReadFragment);
+            }
+        });
+
+        fragmentView.findViewById(R.id.writer_button_to_send).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                outputModule.setInputCharByteArray(inputMessageBytes.toArray());
+                outputModule.sendMessage();
+                try {
+                    Thread.sleep(100);
+                } catch (Exception error) {
+                    Log.d("Exception", error.toString());
+                }
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                try {
+                    Thread.sleep(100);
+                } catch (Exception error) {
+                    Log.d("Exception", error.toString());
+                }
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                NavHostFragment.findNavController(WriteFragment.this)
+                        .navigate(R.id.action_WriteFragment_to_OptionsFragment);
             }
         });
 
@@ -146,7 +171,7 @@ public class WriteFragment extends Fragment {
         for (int i = 0; i < 6; i++) {
             inputCharByte |= touched[i];
         }
-        InputMessageBytes.add(inputCharByte);
+        inputMessageBytes.add(inputCharByte);
         Log.d("Input Byte: ", new Byte(inputCharByte).toString());
     }
 

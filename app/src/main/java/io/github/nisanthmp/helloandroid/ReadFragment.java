@@ -199,7 +199,23 @@ public class ReadFragment extends Fragment {
                     }
                     setDotsColor(view);
                 } else {
-                    view.findViewById(R.id.reader_button_to_write).performClick();
+                    //view.findViewById(R.id.reader_button_to_write).performClick();
+                    viewNext.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    try {
+                        Thread.sleep(100);
+                    } catch (Exception error) {
+                        Log.d("Exception", error.toString());
+                    }
+                    viewNext.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    try {
+                        Thread.sleep(100);
+                    } catch (Exception error) {
+                        Log.d("Exception", error.toString());
+                    }
+                    viewNext.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+
+                    NavHostFragment.findNavController(ReadFragment.this)
+                            .navigate(R.id.action_ReadFragment_to_OptionsFragment);
                 }
             }
         });

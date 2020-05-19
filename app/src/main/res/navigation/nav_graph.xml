@@ -27,6 +27,11 @@
         <action
             android:id="@+id/action_ReadFragment_to_WriteFragment"
             app:destination="@id/WriteFragment" />
+
+        <action
+            android:id="@+id/action_ReadFragment_to_OptionsFragment"
+            app:destination="@id/OptionsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/WriteFragment"
@@ -37,5 +42,10 @@
         <action
             android:id="@+id/action_WriteFragment_to_ReadFragment"
             app:destination="@id/ReadFragment" />
+
+        <action
+            android:id="@+id/action_WriteFragment_to_OptionsFragment"
+            app:destination="@id/OptionsFragment" />
+
     </fragment>
 </navigation>
