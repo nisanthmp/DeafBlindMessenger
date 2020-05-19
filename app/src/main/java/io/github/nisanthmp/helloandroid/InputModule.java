@@ -29,9 +29,27 @@ public class InputModule {
         return 0;
     }
 
+    public byte getPrevChar() {
+        if (charIdx > 1) {
+            Byte brailleByte = charToBrailleByte.get(Character.toString(inputString.charAt(charIdx - 2)));
+            charIdx --;
+            if (brailleByte == null) {
+                return whiteSpace;
+            } else {
+                return brailleByte.byteValue();
+            }
+        } else {
+            return 0;
+        }
+    }
+
     public boolean isThereNextChar() {
         //return charIdx < inputChars.length;
         return charIdx < inputString.length();
+    }
+
+    public boolean isTherePrevChar() {
+        return charIdx > 1;
     }
 
     public InputModule() {
@@ -185,4 +203,5 @@ public class InputModule {
         charToBrailleByte.put("TH", (byte)(0b00110101));
         //charToBrailleByte.put("", (byte)(0b00010000)); //accent prefix
     }
+
 }

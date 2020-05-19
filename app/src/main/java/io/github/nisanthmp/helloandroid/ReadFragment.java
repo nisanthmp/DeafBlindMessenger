@@ -197,6 +197,27 @@ public class ReadFragment extends Fragment {
                 }
             }
         });
+
+        view.findViewById(R.id.reader_button_previous).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View viewPrev) {
+                if(inputModule.isTherePrevChar()) {
+                    viewPrev.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    try {
+                        Thread.sleep(100);
+                    } catch (Exception error) {
+                        Log.d("Exception", error.toString());
+                    }
+                    viewPrev.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    nextChar = inputModule.getPrevChar();
+                    for (int i = 0; i < 6; i++) {
+                        touched[i] = false;
+                    }
+                    setDotsColor(view);
+                }
+            }
+        });
+
         setDotsClickListeners(view);
         displayNextChar(view);
     }
