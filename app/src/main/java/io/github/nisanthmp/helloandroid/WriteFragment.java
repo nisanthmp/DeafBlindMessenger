@@ -126,6 +126,51 @@ public class WriteFragment extends Fragment {
             }
         });
 
+        write_button_1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                collectInputChar();
+                refreshDisplay(fragmentView);
+                return true;
+            }
+        });
+        write_button_2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                collectInputChar();
+                refreshDisplay(fragmentView);
+                return true;
+            }
+        });
+        write_button_3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                collectInputChar();
+                refreshDisplay(fragmentView);
+                return true;
+            }
+        });
+        write_button_4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                collectInputChar();
+                refreshDisplay(fragmentView);
+                return true;
+            }
+        });
+        write_button_5.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                collectInputChar();
+                refreshDisplay(fragmentView);
+                return true;
+            }
+        });
         write_button_6.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
