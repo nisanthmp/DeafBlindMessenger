@@ -8,20 +8,19 @@
 
     <Button
         android:id="@+id/reader_button_previous"
-        android:layout_width="126dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@android:color/darker_gray"
         android:hapticFeedbackEnabled="true"
         android:text="@string/previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reader_button_6"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toEndOf="@+id/reader_button_5" />
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/reader_button_5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75"
+        app:layout_constraintWidth_percent="0.25" />
 
     <Button
         android:id="@+id/reader_button_6"
@@ -89,19 +88,20 @@
 
     <Button
         android:id="@+id/reader_button_next"
-        android:layout_width="131dp"
-        android:layout_height="109dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
         android:background="@android:color/darker_gray"
         android:hapticFeedbackEnabled="true"
         android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reader_button_2"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/reader_button_1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintWidth_percent="0.25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
